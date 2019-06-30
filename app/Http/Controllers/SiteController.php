@@ -14,12 +14,16 @@ class SiteController extends Controller
     protected $m_rep;// объект класса меню репозиторий и т.д.
     protected $template; // имя шаблона для отобр инф на конкр стр
 
+    protected $keywords;
+    protected $meta_desc;
+    protected $title;
+
     protected $vars = [];
 
     protected $contentRightBar = FALSE;
     protected $contentLeftBar = FALSE;
 
-    protected $bar = FALSE;
+    protected $bar = 'no';
 
     public function __construct(MenusRepository $m_rep){
 
@@ -39,6 +43,16 @@ class SiteController extends Controller
             $rightBar = view(env('THEME').'.rightBar')->with('content_rightBar',$this->contentRightBar)->render();
             $this->vars = array_add($this->vars,'rightBar',$rightBar);
         }
+
+        $this->vars = array_add($this->vars,'bar',$this->bar);
+
+        $this->vars = array_add($this->vars,'keywords',$this->keywords);
+        $this->vars = array_add($this->vars,'meta_desc',$this->meta_desc);
+        $this->vars = array_add($this->vars,'title',$this->title);
+
+
+        $footer = view(env('THEME').'.footer')->render();
+        $this->vars = array_add($this->vars,'footer',$footer);
 
 
         return view($this->template)->with($this->vars);
