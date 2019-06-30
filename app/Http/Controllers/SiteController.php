@@ -34,6 +34,13 @@ class SiteController extends Controller
 //        dd($navigation);
         $this->vars = array_add($this->vars,'navigation',$navigation);
 //        dd($this->vars);
+
+        if($this->contentRightBar){
+            $rightBar = view(env('THEME').'.rightBar')->with('content_rightBar',$this->contentRightBar)->render();
+            $this->vars = array_add($this->vars,'rightBar',$rightBar);
+        }
+
+
         return view($this->template)->with($this->vars);
     }
 
