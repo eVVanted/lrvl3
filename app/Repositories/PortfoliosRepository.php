@@ -17,4 +17,6 @@ class PortfoliosRepository extends Repository
         $this->model = $portfolio;
     }
 
+
+
 }
