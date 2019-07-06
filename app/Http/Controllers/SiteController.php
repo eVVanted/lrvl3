@@ -12,6 +12,7 @@ class SiteController extends Controller
     protected $s_rep; // объект класса слайдер репозиторий
     protected $a_rep;// объект класса артикл репозиторий
     protected $m_rep;// объект класса меню репозиторий и т.д.
+    protected $c_rep;// объект класса меню репозиторий и т.д.
     protected $template; // имя шаблона для отобр инф на конкр стр
 
     protected $keywords;
