@@ -70,7 +70,7 @@ class ArticlesController extends SiteController
 
     public function show($alias = false){
         $article = $this->a_rep->one($alias, ['comments' =>true]);
-//        dd($article);
+//        dd($article->comments->groupBy('parent_id'));
         if($article){
             $article->img = json_decode($article->img);
         }
