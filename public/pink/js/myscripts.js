@@ -15,7 +15,22 @@ jQuery(document).ready(function($){
                 headers: {'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')},
                 type:'POST',
                 datatype:'JSON',
-                success: function(html){},
+                success: function(html){
+                    if(html.error){
+
+                    }
+                    if(html.success){
+                        $('.wrap_result')
+                            .append('<br/><strong>СОхранено!</strong>')
+                            .delay(2000)
+                            .fadeOut(500,function(){
+                                if(html.data.parent_id>0){
+                                    comParent.parents('div#respond').prev().after('<ul class="children">'+html.comment+'</ul>');
+                                }
+                                $('#cancel-comment-reply-link').click();
+                            });
+                    }
+                },
                 error: function(){},
             });
         });
