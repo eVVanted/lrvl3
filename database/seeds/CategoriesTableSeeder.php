@@ -17,6 +17,7 @@ class CategoriesTableSeeder extends Seeder
             [
                 'title' => 'Блог',
                 'alias' => 'blog',
+                'parent_id'=>'0'
             ],
             [
                 'title' => 'Компьютеры',

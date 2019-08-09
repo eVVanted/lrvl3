@@ -4,9 +4,11 @@ namespace Corp\Http\Controllers;
 
 use Corp\Repositories\ArticlesRepository;
 use Corp\Repositories\PortfoliosRepository;
+use Corp\User;
 use Illuminate\Http\Request;
 use Corp\Repositories\SlidersRepository;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Hash;
 
 class IndexController extends SiteController
 {
@@ -29,6 +31,7 @@ class IndexController extends SiteController
         //
         $portfolios = $this->getPortfolio();
 //        dd($portfolio);
+//        dd(env('THEME'));
         $content = view(env('THEME').'.content')->with('portfolios',$portfolios)->render();
         $this->vars = array_add($this->vars, 'content', $content);
 
