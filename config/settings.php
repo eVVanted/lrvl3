@@ -6,6 +6,7 @@ return[
     'paginate'=>2,
     'resent_comments'=>3,
     'resent_portfolios'=>3,
+    'other_portfolios' => 8,
 
 ];
 
