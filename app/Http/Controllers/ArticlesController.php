@@ -45,7 +45,7 @@ class ArticlesController extends SiteController
 //            dd($id);
             $where = ['category_id',$id];
         }
-        $articles = $this->a_rep->get(['id','title','alias','created_at','img','desc','user_id','category_id'],false,true, $where);
+        $articles = $this->a_rep->get(['id','title','alias','created_at','img','desc','user_id','category_id','keywords','meta_desc'],false,true, $where);
 //        dd($articles);
         if($articles){
             $articles->load('user','category','comments');
@@ -70,7 +70,11 @@ class ArticlesController extends SiteController
 
     public function show($alias = false){
         $article = $this->a_rep->one($alias, ['comments' =>true]);
+//        dd($article);
 //        dd($article->comments->groupBy('parent_id'));
+        $this->title = $article->title;
+        $this->keywords = $article->keywords;
+        $this->meta_desc = $article->meta_desc;
         if($article){
             $article->img = json_decode($article->img);
         }

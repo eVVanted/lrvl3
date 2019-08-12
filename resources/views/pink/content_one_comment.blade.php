@@ -7,7 +7,7 @@
         <!-- .comment-author .vcard -->
         <div class="comment-meta commentmetadata">
             <div class="intro">
-                <div class="commentNumber">#&nbsp;</div>
+
             </div>
             <div class="comment-body">
                 <p>{{$data['text']}}</p>
