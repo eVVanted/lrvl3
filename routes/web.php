@@ -49,3 +49,8 @@ Route::match(['get','post'], '/contacts', ['uses'=>'ContactsController@index', '
 Route::get('login', 'Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout');
+
+Route::group(['prefix'=>'admin','middleware'=>'auth',],function(){
+    Route::get('/',['uses'=>'Admin\IndexController@index','as'=>'adminIndex']);
+    Route::resource('/articles','Admin\ArticlesController');
+});
