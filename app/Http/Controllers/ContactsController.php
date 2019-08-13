@@ -35,11 +35,15 @@ class ContactsController extends SiteController
                 $m->from($data['email'],$data['name']);
                 $m->to($mail_admin,'Mr. Admin')->subject('Question');
             });
-            dd($result);
-
-            if($result){
+//            dd($result);
+            if(count(Mail::failures()) > 0){
+                // Your error message or whatever you want.
+            } else {
                 return redirect()->route('contacts')->with('status', 'Email is Sent');
             }
+//            if($result){
+//
+//            }
 
         }
 
