@@ -2,8 +2,10 @@
 
 namespace Corp\Exceptions;
 
+use Corp\Http\Controllers\SiteController;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 
 class Handler extends ExceptionHandler
 {
@@ -34,6 +36,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+//        dd($exception); здесь можем выполнить любые действия по предварительной обработке исключений
         parent::report($exception);
     }
 
@@ -46,6 +49,20 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+//        dd($exception->getStatusCode());
+        if($this->isHttpException($exception)){
+            $statusCode = $exception->getStatusCode();
+            switch($statusCode){
+                case '404':
+                    $obj = new SiteController(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
+//                    dd($obj);
+                    $navigation = view(env('THEME').'.navigation')->with('menu',$obj->getMenu())->render();
+                    Log::alert('Page not found - '.$request->url());
+
+                return response()->view(env('THEME').'.404', ['bar' => 'no', 'title' => 'Страница не найдена', 'navigation'=>$navigation]);
+
+            }
+        }
         return parent::render($request, $exception);
     }
 }
