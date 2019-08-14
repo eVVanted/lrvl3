@@ -19,8 +19,9 @@ class AdminController extends Controller
 
     public function __construct(){
         $this->user = Auth::user();
+//        dd($this->user);
         if(!$this->user){
-//            abort(403);
+            abort(403);
         }
     }
 

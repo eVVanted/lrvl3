@@ -48,4 +48,20 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany('Corp\Role', 'role_user');
     }
+
+    public function canDo($permission, $required = false){
+        if(is_array($permission)){
+
+        } else{
+//            $this->roles()->get();
+            foreach($this->roles as $role){
+                foreach($role->permissions as $perm){
+                    if(str_is($permission,$perm->name)){
+                        return 
+                    }
+                }
+
+            }
+        }
+    }
 }
