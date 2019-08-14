@@ -27,7 +27,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/admin';
 //    protected $loginView;
-    protected $username = 'login';
+//    protected $username = 'login';
 
     /**
      * Create a new controller instance.
@@ -42,6 +42,16 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view(env('THEME').'.login')->with('title','Вход на сайт');
+    }
+
+    public function username()
+    {
+        return 'login';
+    }
+
+    protected function redirectTo()
+    {
+        return '/admin';
     }
 
 

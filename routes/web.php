@@ -46,7 +46,7 @@ Route::match(['get','post'], '/contacts', ['uses'=>'ContactsController@index', '
 
 //Route::auth(); // если нужны регистрация и смена паролей
 
-Route::get('login', 'Auth\LoginController@showLoginForm');
+Route::get('login', ['uses'=>'Auth\LoginController@showLoginForm', 'as' => 'login']);
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout');
 

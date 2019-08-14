@@ -5,9 +5,9 @@ namespace Corp\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Lavary\Menu\Menu;
+//use Lavary\Menu\Menu;
 
-class AdminController extends \Corp\Http\Controllers\Controller
+class AdminController extends Controller
 {
     protected $p_rep;
     protected $a_rep;
@@ -20,7 +20,7 @@ class AdminController extends \Corp\Http\Controllers\Controller
     public function __construct(){
         $this->user = Auth::user();
         if(!$this->user){
-            abort(403);
+//            abort(403);
         }
     }
 
@@ -43,13 +43,13 @@ class AdminController extends \Corp\Http\Controllers\Controller
 
     public function getMenu()
     {
-        return Menu::make('adminMenu', function($menu){
-            $menu->add('Статьи',array('route'=>'admin.articles.index'));
-            $menu->add('Портфолио',array('route'=>'admin.articles.index'));
-            $menu->add('Меню',array('route'=>'admin.articles.index'));
-            $menu->add('Пользователи',array('route'=>'admin.articles.index'));
+        return \Menu::make('adminMenu', function($menu){
+            $menu->add('Статьи',array('route'=>'articles.index'));
+            $menu->add('Портфолио',array('route'=>'articles.index'));
+            $menu->add('Меню',array('route'=>'articles.index'));
+            $menu->add('Пользователи',array('route'=>'articles.index'));
 //            $menu->add('Пользователи',array('route'=>'admin.users.index'));
-            $menu->add('Привелегии',array('route'=>'admin.articles.index'));
+            $menu->add('Привелегии',array('route'=>'articles.index'));
 //            $menu->add('Привелегии',array('route'=>'admin.permissions.index'));
         });
     }

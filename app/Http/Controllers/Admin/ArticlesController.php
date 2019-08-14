@@ -5,7 +5,7 @@ namespace Corp\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
 
-class ArticlesController extends Controller
+class ArticlesController extends AdminController
 {
     /**
      * Display a listing of the resource.
