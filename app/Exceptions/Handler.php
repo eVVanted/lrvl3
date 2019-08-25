@@ -61,8 +61,8 @@ class Handler extends ExceptionHandler
 
                 return response()->view(env('THEME').'.404', ['bar' => 'no', 'title' => 'Страница не найдена', 'navigation'=>$navigation]);
 
-                case '403':
-                return redirect('/login');
+//                case '403':
+//                return redirect('/login');
 
             }
         }
