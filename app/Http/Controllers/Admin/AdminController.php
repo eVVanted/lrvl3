@@ -18,11 +18,12 @@ class AdminController extends Controller
     protected $vars;
 
     public function __construct(){
-        $this->user = Auth::user();
-//        dd($this->user);
-        if(!$this->user){
-            abort(403);
-        }
+//        $this->user = Auth::user();
+////        dd($this->user);
+//        if(!$this->user){
+////            abort(403);
+//        }
+        $this->middleware('auth');
     }
 
     public function renderOutput(){
