@@ -72,9 +72,12 @@ class ArticlesController extends SiteController
         $article = $this->a_rep->one($alias, ['comments' =>true]);
 //        dd($article);
 //        dd($article->comments->groupBy('parent_id'));
-        $this->title = $article->title;
-        $this->keywords = $article->keywords;
-        $this->meta_desc = $article->meta_desc;
+        if(isset($article->id)){
+            $this->title = $article->title;
+            $this->keywords = $article->keywords;
+            $this->meta_desc = $article->meta_desc;
+        }
+
         if($article){
             $article->img = json_decode($article->img);
         }
