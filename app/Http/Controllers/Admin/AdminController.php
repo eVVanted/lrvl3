@@ -46,12 +46,12 @@ class AdminController extends Controller
     public function getMenu()
     {
         return \Menu::make('adminMenu', function($menu){
-            $menu->add('Статьи',array('route'=>'articles.index'));
-            $menu->add('Портфолио',array('route'=>'articles.index'));
-            $menu->add('Меню',array('route'=>'articles.index'));
-            $menu->add('Пользователи',array('route'=>'articles.index'));
+            $menu->add('Статьи',array('route'=>'admin.articles.index'));
+            $menu->add('Портфолио',array('route'=>'admin.articles.index'));
+            $menu->add('Меню',array('route'=>'admin.articles.index'));
+            $menu->add('Пользователи',array('route'=>'admin.articles.index'));
 //            $menu->add('Пользователи',array('route'=>'admin.users.index'));
-            $menu->add('Привелегии',array('route'=>'articles.index'));
+            $menu->add('Привелегии',array('route'=>'admin.articles.index'));
 //            $menu->add('Привелегии',array('route'=>'admin.permissions.index'));
         });
     }
