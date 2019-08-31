@@ -2,6 +2,7 @@
 
 namespace Corp\Providers;
 
+use Corp\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -34,6 +35,11 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('menu', function($value){
 //            dd($value);
             return \Corp\Menu::where('id',$value)->first();
+        });
+
+        Route::bind('user', function($value){
+//            dd($value);
+            return \Corp\User::find($value);
         });
     }
 
