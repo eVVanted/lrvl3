@@ -30,6 +30,11 @@ class RouteServiceProvider extends ServiceProvider
 //            dd($value);
             return \Corp\Article::where('alias',$value)->first();
         });
+
+        Route::bind('menu', function($value){
+//            dd($value);
+            return \Corp\Menu::where('id',$value)->first();
+        });
     }
 
     /**
